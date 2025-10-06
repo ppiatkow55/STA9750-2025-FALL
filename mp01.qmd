@@ -4,7 +4,7 @@ title: "Mini-Project #01: Gourmet Cheeseburgers Across the Globe: Exploring the 
 
 
 
-## Task 1: Data Aquisition
+## Task 1: Data Aquisition + 
 
 ```{r}
 #| code-fold: true
