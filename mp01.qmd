@@ -1,0 +1,306 @@
+---
+title: "Mini-Project #01: Gourmet Cheeseburgers Across the Globe: Exploring the Most Popular Programming on Netflix"
+---
+
+
+
+## Task 1: Data Aquisition
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| results: hide
+
+if(!dir.exists(file.path("data", "mp01"))){
+    dir.create(file.path("data", "mp01"), showWarnings=FALSE, recursive=TRUE)
+}
+
+GLOBAL_TOP_10_FILENAME <- file.path("data", "mp01", "global_top10_alltime.csv")
+
+if(!file.exists(GLOBAL_TOP_10_FILENAME)){
+    download.file("https://www.netflix.com/tudum/top10/data/all-weeks-global.tsv", 
+                  destfile=GLOBAL_TOP_10_FILENAME)
+}
+
+COUNTRY_TOP_10_FILENAME <- file.path("data", "mp01", "country_top10_alltime.csv")
+
+if(!file.exists(COUNTRY_TOP_10_FILENAME)){
+    download.file("https://www.netflix.com/tudum/top10/data/all-weeks-countries.tsv", 
+                  destfile=COUNTRY_TOP_10_FILENAME)
+}
+```
+
+## Task 2 & 3: Data Cleaning / Data Import
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| results: hide
+#| message: false
+
+if (!require("tidyverse")) install.packages("tidyverse")
+library(readr)
+library(dplyr)
+
+GLOBAL_TOP_10 <- read_tsv(GLOBAL_TOP_10_FILENAME)
+
+
+GLOBAL_TOP_10 <- GLOBAL_TOP_10 |>
+  mutate(season_title = if_else(season_title == "N/A", NA_character_, season_title))
+
+glimpse(GLOBAL_TOP_10)
+
+COUNTRY_TOP_10 <- read_tsv(COUNTRY_TOP_10_FILENAME, na = "N/A")
+
+COUNTRY_TOP_10 <- COUNTRY_TOP_10
+  
+ glimpse(COUNTRY_TOP_10)
+
+```
+
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| results: hide
+#| message: false
+
+if (!require("DT")) install.packages('DT')
+ 
+ library(stringr)
+ format_titles <- function(df){
+   colnames(df) <- str_replace_all(colnames(df), "_", " ") |> str_to_title()
+   df
+ }
+ 
+ GLOBAL_TOP_10 |>
+   mutate(`runtime_(minutes)` = round(60 * runtime)) |>
+   select(-season_title) |>
+   format_titles() |>
+   head(n=20) |>
+   datatable(options=list(searching=FALSE, info=FALSE)) |>
+   formatRound(c('Weekly Hours Viewed', 'Weekly Views'))
+
+```
+
+## Exploratory Data Analysis
+
+### 1. How many different countries does Netflix operate in?
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+
+COUNTRY_TOP_10 |>
+    select(country_name) |>
+    count(country_name) |>
+    summarize(number = n())
+
+```
+ Netflix operates in 94 countries
+ 
+
+### 2. Which non-English-language film has spent the most cumulative weeks in the global top 10? How many weeks did it spend?
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+GLOBAL_TOP_10 |>
+      select(show_title, category, cumulative_weeks_in_top_10) |>
+      filter(category == "Films (Non-English)") |>
+      slice_max(cumulative_weeks_in_top_10) 
+
+
+```
+All Quiet on the Western Front for 23 weeks
+
+
+### 3. What is the longest film (English or non-English) to have ever appeared in the Netflix global Top 10? How long is it in minutes?
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+GLOBAL_TOP_10 |>
+      mutate(`runtime_(minutes)` = round(60 * runtime)) |>
+      select(show_title, `runtime_(minutes)`, category) |>
+      filter(category == c("Films (Non-English)", "Films (English)")) |>
+      slice_max(`runtime_(minutes)`)
+
+```
+Pushpa 2: The Rule (Reloaded Version) with a runtime of 224 minutes
+
+
+### 4. For each of the four categories, what program has the most total hours of global viewership?
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+GLOBAL_TOP_10 |>
+      select(show_title, weekly_hours_viewed, category) |>
+      group_by(category) |>
+      slice_max(weekly_hours_viewed)
+
+```
+Films (English) - Don't look up - 152290000 hours <br>
+Films (Non- English) - Troll  - 75860000 hours <br>
+TV (English) - Wednesday - 411290000 hours <br>
+TV (Non-English) - Squid Game - 571760000 hours <br>
+
+
+### 5. Which TV show had the longest run in a country’s Top 10? How long was this run and in what country did it occur?
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+COUNTRY_TOP_10 |>
+        select(country_name, category, show_title, cumulative_weeks_in_top_10) |>
+        filter(category == "TV") |>
+        slice_max(cumulative_weeks_in_top_10)
+
+
+```
+Money Heist had the longest run in a country's Top 10. The run was 127 weeks in Pakistan
+
+
+### 6. Netflix provides over 200 weeks of service history for all but one country in our data set. Which country is this and when did Netflix cease operations in that country?
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+COUNTRY_TOP_10 |>
+        select(country_name, week) |>
+        mutate(n_weeks = format(week, "%Y-%V")) |>
+        group_by(country_name) |>
+        summarize(total_weeks = n_distinct(n_weeks)) |>
+        filter(total_weeks < 200)
+      
+      COUNTRY_TOP_10 |>
+        select(country_name, week) |>
+        filter(country_name == "Russia") |>
+        arrange(desc(week)) |>
+        head( , n = 1)
+
+
+```
+Russia with 35 weeks, Netflix ceased operations on 2/27/22 
+
+
+### 7. What is the total viewership of the TV show Squid Game? Note that there are three seasons total and we are looking for the total number of hours watched across all seasons.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+
+GLOBAL_TOP_10 |>
+        select(show_title, season_title, weekly_hours_viewed) |>
+        filter(show_title == "Squid Game") |>
+        group_by(season_title) |>
+        summarize(weekly_hours_viewed = sum(weekly_hours_viewed)) |>
+        summarize(sum(weekly_hours_viewed))
+
+```
+Total viewership for Squid Game is 5048300000 hours
+
+
+### 8. The movie Red Notice has a runtime of 1 hour and 58 minutes. Approximately how many views did it receive in 2021? Note that Netflix does not provide the weekly_views values that far back in the past, but you can compute it yourself using the total view time and the runtime.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+GLOBAL_TOP_10 |>
+        select(show_title, weekly_hours_viewed, week) |>
+        filter(show_title == "Red Notice", year(week) == 2021) |>
+        mutate(views = weekly_hours_viewed / 1.58) |>
+        summarize(total_views_2021 = sum(views))
+
+
+```
+Red Notice received approximately 251101266 views in 2021
+
+
+### 9. How many Films reached Number 1 in the US but did not originally debut there? That is, find films that first appeared on the Top 10 chart at, e.g., Number 4 but then became more popular and eventually hit Number 1? What is the most recent film to pull this off?
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+
+COUNTRY_TOP_10 |>
+        select(country_name, week, weekly_rank, category, show_title) |>
+        filter(country_name == "United States") |>
+        filter(category == "Films") |>
+        group_by(show_title) |>
+        mutate(first_week = min(week)) |>
+        mutate(first_rank = weekly_rank[week == first_week]) |>
+        filter(weekly_rank == 1) |>
+        filter(first_rank > 1) |>
+        distinct(show_title) |>
+        glimpse() |>
+        view()
+
+```
+45 movies in the United States reached number 1 but did not debut there <br>
+The most recent film to pull this off is KPop Demon Hunters on 9/14/25
+
+
+### 10. Which TV show/season hit the top 10 in the most countries in its debut week? In how many countries did it chart?
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| message: false
+
+
+COUNTRY_TOP_10 |>
+        select(country_name, week, weekly_rank, category, show_title, season_title) |>
+        filter(category == "TV") |>
+        group_by(show_title,season_title, country_name) |>
+        summarize(first_week = min(week, na.rm = TRUE), 
+                  first_rank = weekly_rank[week == first_week]) |>
+        group_by(show_title, season_title) |>
+        summarize(max_occurance = n()) |>
+        arrange(desc(max_occurance))
+
+
+```
+7 shows hit the top 10 in 94 countries in its debut week. <br>
+      # 1 All of Us Are Dead All of Us Are Dead: Season 1     94 <br>
+      # 2 Emily in Paris     Emily in Paris: Season 2         94 <br>
+      #3 Inventing Anna     Inventing Anna: Limited Series    94 <br>
+      #4 Sex Education      Sex Education: Season 3           94 <br>
+      #5 Squid Game         Squid Game: Season 1              94 <br>
+      # 6 The Witcher        The Witcher: Season 2            94 <br>
+      #7 You                You: Season 3                     94 <br>
+
+
+# Press Release:
+
+## Stranger things have happened…
+###  but not when it comes to the success of the Netflix original show Stranger Things. The show captured the attention of audiences across the globe and the upcoming release of season 5 may be one for the record books. 
+###  To put it in perspective, the total hourly viewership of the last 4 seasons exceeded 2.9 billion hours. Season 4 alone significantly contributed to the show’s overall success by exceeding 1.8 billion hours of total viewership. 
+###  There is no doubt that the show is a global phenomenon. In just the debut week, all 4 seasons appeared in the TOP 10 in at least 90 different countries. In the United States, Stranger Things had a great run with 16 cumulative weeks in the TOP 10 but the show had a longer run in 13 other countries. In the Ukraine, the show spent 24 cumulative weeks in the TOP 10, followed by Pakistan with 23 cumulative weeks in the TOP 10. 
+###  Season 5 of Stranger Things is set to continue this record-breaking run. Make sure to tune in on November 26th and be part of this global phenomenon. 
+
+
+
+## The Netflix-Bollywood connection
+### As Netflix continues to invest and partner with Bollywood studios to bring original content to the viewer world-wide. Content which originates in India draws major attention not only in the native country but also in other countries. 
+### One of those notable examples is a TV show by the name of The Railway Men - The Untold Story Of Bhopal 1984, the show not only had an incredible run in India with 30 cumulative weeks in the TOP 10 but also appeared on the TOP 10 of 35 other countries. 
+### Hindi films have also been making a splash on the world stage. From 2022 – 2024, 17 Hindi films appeared on Netflix’s Global Top 10 list. During this timeframe, Hindi films have attributed 183 million hours of viewership. 
+### India is clearly a great opportunity for Netflix moving forward. As Netflix continues to build relationships with existing large and independent studios in India, it will have the opportunity to greatly increase its footprint in global viewership. 
+
+
+## It’s a me, Mario!
+### It’s possible that Super Mario can be considered as one of the most recognizable figures in the world. The video game character is coming to your screen once again! The sequel to the The Super Mario Bros Movie is set for release in April of 2026. This should be another crowd pleaser.
+### The Super Mario Bros Movie made a debut on Netflix on December 3rd, 2023. The movie not only hit the Netflix Global Top 10 on debut but stayed on the list for 24 cumulative weeks up until June 2025. ### The global run accumulated just over 155 million hours of viewership. 
+### The movie placed on the Country Top 10 in 69 different countries and was particularly well received in the United States with 38 cumulative weeks in the top 10, followed by Belgium with 31 cumulative weeks.
+### Taking these long Top 10 runs into account, it is hard to dismiss the hype around the sequel. 
