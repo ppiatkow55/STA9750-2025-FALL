@@ -10,11 +10,21 @@ website:
   navbar:
     background: primary
     search: false
+    right:
+      - text: "Mini Project 01"
+        href: "./Mp1.html"
+      - text: "MP2"
+      - text: "MP3" 
+      - text: "MP4"
+      - text: "MP5"
     
 format:
   html:
     theme: morph
     toc: false
+    
+    
+    
 
 editor:
   mode: source
