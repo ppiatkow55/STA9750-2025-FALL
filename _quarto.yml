@@ -13,14 +13,14 @@ website:
     right:
       - text: "Mini Project 01"
         href: "./Mp1.html"
-      - text: "MP2"
+      - text: "Mini Project 02
+        href: "./mp2.html"
       - text: "MP3" 
       - text: "MP4"
-      - text: "MP5"
     
 format:
   html:
-    theme: morph
+    theme: cerulean
     toc: false
     
     
