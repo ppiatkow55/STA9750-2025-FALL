@@ -6,15 +6,20 @@ website:
   title: "STA 9750 Submission Material"
   description:
     Course Projects for STA 9750 at Baruch College
-  site-url: "https://ppiatkow55.github.io/STA9750-2025-FALL/"
+  site-url: "https://ppiatkow55.github.io/STA9750-2025-FALL/" 
   navbar:
     background: primary
     search: false
     right:
       - text: "Mini Project 01"
         href: "./Mp1.html"
+<<<<<<< HEAD
       - text: "Mini Project 02" 
         href: "./mp02.html"
+=======
+      - text: "Mini Project 02"
+        href: "./Mp2.html"
+>>>>>>> 094636d (mp2)
       - text: "MP3" 
       - text: "MP4"
     
