@@ -1,7 +1,6 @@
 ---
 title: "Mini Project 02" 
 subtitle: "Making Backyards Affordable for All" 
-html: 
 code-fold: true 
 toc: true 
 toc-depth: 10
