@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.22">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Mini Project 03 – STA 9750 Submission Material</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-cd7454b418030687c631a6a7286fbe16.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-7ee73d549045f2333a4b48a3669514bd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.34.0/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">STA 9750 Submission Material</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="././Mp1.html"> 
+<span class="menu-text">Mini Project 01</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="././mp02.html"> 
+<span class="menu-text">Mini Project 02</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="././mp03.html"> 
+<span class="menu-text">Mini Project 03</span></a>
+  </li>  
+  <li class="nav-item">
+    <span class="nav-link">
+<span class="menu-text">MP4</span>
+    </span>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data-acquisition" id="toc-data-acquisition" class="nav-link" data-scroll-target="#data-acquisition">Data Acquisition</a>
+  <ul>
+  <li><a href="#nyc-city-council-district-boundaries" id="toc-nyc-city-council-district-boundaries" class="nav-link" data-scroll-target="#nyc-city-council-district-boundaries">NYC City Council District Boundaries</a></li>
+  </ul></li>
+  <li><a href="#nyc-forestry-tree-points" id="toc-nyc-forestry-tree-points" class="nav-link" data-scroll-target="#nyc-forestry-tree-points">NYC Forestry Tree Points</a>
+  <ul>
+  <li><a href="#api-data-download" id="toc-api-data-download" class="nav-link" data-scroll-target="#api-data-download">API Data Download</a></li>
+  </ul></li>
+  <li><a href="#data-integration-and-initial-exploration" id="toc-data-integration-and-initial-exploration" class="nav-link" data-scroll-target="#data-integration-and-initial-exploration">Data Integration and Initial Exploration</a>
+  <ul>
+  <li><a href="#mapping-nyc-trees" id="toc-mapping-nyc-trees" class="nav-link" data-scroll-target="#mapping-nyc-trees">Mapping NYC Trees</a></li>
+  </ul></li>
+  <li><a href="#district-level-analysis-of-tree-coverage" id="toc-district-level-analysis-of-tree-coverage" class="nav-link" data-scroll-target="#district-level-analysis-of-tree-coverage">District-Level Analysis of Tree Coverage</a>
+  <ul>
+  <li><a href="#question-1.-which-council-district-has-the-most-trees" id="toc-question-1.-which-council-district-has-the-most-trees" class="nav-link" data-scroll-target="#question-1.-which-council-district-has-the-most-trees">Question 1. Which council district has the most trees?</a></li>
+  <li><a href="#question-2.-which-council-district-has-the-highest-density-of-trees" id="toc-question-2.-which-council-district-has-the-highest-density-of-trees" class="nav-link" data-scroll-target="#question-2.-which-council-district-has-the-highest-density-of-trees">Question 2. Which council district has the highest density of trees?</a></li>
+  <li><a href="#question-3.-which-district-has-highest-fraction-of-dead-trees-out-of-all-trees" id="toc-question-3.-which-district-has-highest-fraction-of-dead-trees-out-of-all-trees" class="nav-link" data-scroll-target="#question-3.-which-district-has-highest-fraction-of-dead-trees-out-of-all-trees">Question 3. Which district has highest fraction of dead trees out of all trees?</a></li>
+  <li><a href="#question-4.-what-is-the-most-common-tree-species-in-manhattan" id="toc-question-4.-what-is-the-most-common-tree-species-in-manhattan" class="nav-link" data-scroll-target="#question-4.-what-is-the-most-common-tree-species-in-manhattan">Question 4. What is the most common tree species in Manhattan?</a></li>
+  <li><a href="#question-5.-what-is-the-species-of-the-tree-closest-to-baruchs-campus" id="toc-question-5.-what-is-the-species-of-the-tree-closest-to-baruchs-campus" class="nav-link" data-scroll-target="#question-5.-what-is-the-species-of-the-tree-closest-to-baruchs-campus">Question 5. What is the species of the tree closest to Baruch’s campus?</a></li>
+  </ul></li>
+  <li><a href="#government-project-design" id="toc-government-project-design" class="nav-link" data-scroll-target="#government-project-design">Government Project Design</a>
+  <ul>
+  <li><a href="#proposal" id="toc-proposal" class="nav-link" data-scroll-target="#proposal"><span style="color: #003366;"><strong>Proposal</strong></span></a></li>
+  <li><a href="#data-plots" id="toc-data-plots" class="nav-link" data-scroll-target="#data-plots"><span style="color: #003366;"><strong>Data Plots</strong></span></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mini Project 03</h1>
+<p class="subtitle lead">Visualizing and Maintaining the Green Canopy of NYC</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This project examines how trees are distributed across New York City’s council districts. The objective is to assess the urban forest canopy, pinpoint areas with insufficient tree coverage or maintenance, and develop an evidence-based proposal that promotes equitable and sustainable tree growth citywide</p>
+</section>
+<section id="data-acquisition" class="level2">
+<h2 class="anchored" data-anchor-id="data-acquisition">Data Acquisition</h2>
+<section id="nyc-city-council-district-boundaries" class="level3">
+<h3 class="anchored" data-anchor-id="nyc-city-council-district-boundaries">NYC City Council District Boundaries</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"mp03"</span>))){</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dir.create</span>(<span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"mp03"</span>), <span class="at">showWarnings=</span><span class="cn">FALSE</span>, <span class="at">recursive=</span><span class="cn">TRUE</span>)}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/Downloads"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">"20221006-Final-Plan-Districts.zip"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>data1 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"~/Downloads/Districts 2022-10-06.shp"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>data1_Tr <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(data1, <span class="at">crs =</span> <span class="st">"WGS84"</span>) </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+</section>
+<section id="nyc-forestry-tree-points" class="level2">
+<h2 class="anchored" data-anchor-id="nyc-forestry-tree-points">NYC Forestry Tree Points</h2>
+<section id="api-data-download" class="level3">
+<h3 class="anchored" data-anchor-id="api-data-download">API Data Download</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>trees_data <span class="ot">&lt;-</span> <span class="st">"https://data.cityofnewyork.us/resource/hn5i-inap.geojson"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>NY_Trees <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="do">###################################################</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">50000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>NY_Trees1 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="do">#########################################################</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">100000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>NY_Trees2 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="do">#########################################################</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">150000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>NY_Trees3 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="do">########################################################</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">200000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>NY_Trees4 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="do">########################################################</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">250000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>NY_Trees5 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">300000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>NY_Trees6 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">350000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>NY_Trees7 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">400000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>NY_Trees8 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">450000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>NY_Trees9 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">500000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>NY_Trees10 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">550000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>NY_Trees11 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">600000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>NY_Trees12 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">650000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>NY_Trees13 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">700000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>NY_Trees14 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">750000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>NY_Trees15 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">800000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>NY_Trees16 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">850000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>NY_Trees17 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">900000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>NY_Trees18 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">950000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a>NY_Trees19 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">1000000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>NY_Trees20 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a>api_trees <span class="ot">&lt;-</span> <span class="fu">request</span>(trees_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_url_query</span>(<span class="st">'$limit'</span> <span class="ot">=</span> <span class="dv">50000</span>, <span class="st">'$offset'</span> <span class="ot">=</span> <span class="dv">1050000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_retry</span>(<span class="at">max_tries=</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>NY_Trees21 <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="fu">resp_body_string</span>(api_trees))</span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a><span class="do">##############################################################</span></span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a>trees_dataframes <span class="ot">&lt;-</span> <span class="fu">list</span>(NY_Trees, NY_Trees1, NY_Trees2, NY_Trees3, NY_Trees4, NY_Trees5, </span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a>                         NY_Trees6, NY_Trees7, NY_Trees8, NY_Trees9, NY_Trees10, NY_Trees11,</span>
+<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a>                         NY_Trees12, NY_Trees13,NY_Trees14, NY_Trees15, NY_Trees16, NY_Trees17, </span>
+<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a>                         NY_Trees18, NY_Trees19, NY_Trees20, NY_Trees21)</span>
+<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a>combined_trees_dataframes <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(trees_dataframes)</span>
+<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(combined_trees_dataframes)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+</section>
+<section id="data-integration-and-initial-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="data-integration-and-initial-exploration">Data Integration and Initial Exploration</h2>
+<section id="mapping-nyc-trees" class="level3">
+<h3 class="anchored" data-anchor-id="mapping-nyc-trees">Mapping NYC Trees</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> data1_Tr,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"lightgray"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> combined_trees_dataframes,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha =</span> <span class="fl">0.01</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"NYC Tree Points"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mp03_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Tree_points <span class="ot">&lt;-</span> <span class="fu">st_join</span>(combined_trees_dataframes, data1_Tr,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">join =</span> st_intersects)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Tree_points)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 52 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: -74.20904 ymin: 40.51958 xmax: -73.73589 ymax: 40.88763
+Geodetic CRS:  WGS 84
+  tpcondition stumpdiameter      riskratingdate riskrating objectid
+1   Excellent          &lt;NA&gt;                &lt;NA&gt;       &lt;NA&gt;    86823
+2        Good          &lt;NA&gt;                &lt;NA&gt;       &lt;NA&gt;    87623
+3        Poor          &lt;NA&gt;                &lt;NA&gt;       &lt;NA&gt;    88023
+4        Fair          &lt;NA&gt; 2024-06-28 12:41:55          6    88823
+5        Dead          &lt;NA&gt;                &lt;NA&gt;       &lt;NA&gt;    88824
+6        Fair          &lt;NA&gt;                &lt;NA&gt;       &lt;NA&gt;    88825
+                              globalid tpstructure
+1 2B457A4C-E0E4-4E17-81C4-A5449F51C804        Full
+2 37195E1A-A7EE-4AA4-8389-19A0ED5C46F7     Retired
+3 6BA8E72B-1901-4EF3-ABFF-D11680AB4A9B     Retired
+4 79A5DBAF-F305-4DA1-A4B1-7A8C8D085435        Full
+5 182F6647-D9C1-4A45-ADA0-9ADEFD1ECC60     Retired
+6 394AEC59-B91C-45AD-93FB-2996B0C09747     Retired
+                 plantingspaceglobalid         createddate dbh planteddate
+1 E814CD37-9F53-4D79-AF86-3B454F9D29B9 2015-02-28 05:00:00  20        &lt;NA&gt;
+2 A644AB79-A3CB-4F7F-923B-F308E615CCD4 2015-03-03 05:00:00  10        &lt;NA&gt;
+3 21431016-EDB8-4A0B-B122-673125800C87 2015-03-03 05:00:00  24        &lt;NA&gt;
+4 96FB6C55-612F-466D-9449-85A3CD2178E1 2015-03-04 05:00:00  10        &lt;NA&gt;
+5 4796B64F-906C-4345-A4E9-5CD6133642F8 2015-03-04 05:00:00  10        &lt;NA&gt;
+6 F31930BA-47FD-4D9F-B8A2-7A4FA4707D16 2015-03-04 05:00:00  19        &lt;NA&gt;
+          updateddate
+1 2016-10-20 17:43:53
+2 2019-09-18 13:12:55
+3 2018-03-27 14:00:42
+4 2024-06-28 12:41:55
+5 2016-10-24 02:50:43
+6 2017-04-12 09:35:50
+                                                genusspecies OID      AREA
+1                                  Acer nigrum - black maple  24  6.692859
+2                         Fraxinus pennsylvanica - Green ash   9  2.217802
+3                            Acer platanoides - Norway maple  12  4.695997
+4                            Pyrus calleryana - Callery pear  51 48.089836
+5 Gleditsia triacanthos var. inermis - Thornless honeylocust   2  2.059666
+6                             Fraxinus americana - white ash  23 11.148582
+  DISTRICT MEMBERS LOCKED NAME ADJ_POPULA ADJ_18_POP ADJ_18_WHT ADJ_18_BLK
+1       24       1   &lt;NA&gt; &lt;NA&gt;     169157     134919      40352      15231
+2       09       1   &lt;NA&gt; &lt;NA&gt;     176831     144269      27191      76617
+3       12       1   &lt;NA&gt; &lt;NA&gt;     175452     138257       8481      92733
+4       51       1   &lt;NA&gt; &lt;NA&gt;     169200     135070     109054       1697
+5       02       1   &lt;NA&gt; &lt;NA&gt;     177066     160596      98508      11072
+6       23       1   &lt;NA&gt; &lt;NA&gt;     169886     139812      35704      15921
+  ADJ_18_ASN ADJ_H18_PO ADJ_NH18_W ADJ_NH18_B ADJ_NH18_A CVAP_TOT20 CVAP_ASN20
+1      49630      26926      37213      14280      49443   103926.5   32016.00
+2       6706      34855      23885      71831       6590   124249.8    4747.01
+3       2660      37476       4373      88413       2585   119115.6    2217.19
+4      12135      13500     105449       1529      12061   127655.0    8065.12
+5      23935      27474      92454       9644      23724   133711.9   17373.33
+6      61242      19443      32761      15197      61026   116544.8   47388.00
+  CVAP_BLK20 CVAP_WHT20 CVAP_HSP20 IDEAL_VALU DEVIATION F_DEVIATIO POLSBY_POP
+1   14937.33   35364.97   20263.43     172882     -3725  -0.021546   0.398940
+2   70542.21   20635.46   27234.89     172882      3949   0.022842   0.357487
+3   77970.30    4770.60   32877.81     172882      2570   0.014866   0.485567
+4    1515.95  105691.56   11852.68     172882     -3682  -0.021298   0.517991
+5   10997.03   82275.53   22168.87     172882      4184   0.024201   0.401590
+6   14634.34   35037.39   17921.44     172882     -2996  -0.017330   0.547093
+     REOCK F_ADJ_18_P F_ADJ_18_W F_ADJ_18_B F_ADJ_18_A F_ADJ_H18_ F_ADJ_NH18
+1 0.325602   0.797596   0.299083   0.112890   0.367850   0.199572   0.275817
+2 0.228456   0.815858   0.188474   0.531070   0.046483   0.241597   0.165559
+3 0.561783   0.788005   0.061342   0.670729   0.019240   0.271060   0.031630
+4 0.504939   0.798286   0.807389   0.012564   0.089842   0.099948   0.780699
+5 0.417207   0.906984   0.613390   0.068943   0.149039   0.171075   0.575693
+6 0.512605   0.822975   0.255371   0.113874   0.438031   0.139065   0.234322
+  F_ADJ_NH11 F_ADJ_NH12 F_CVAP_TOT F_CVAP_ASN F_CVAP_BLK F_CVAP_WHT F_CVAP_HSP
+1   0.105841   0.366464   0.614379   0.308064   0.143730   0.340288   0.194978
+2   0.497896   0.045679   0.702647   0.038205   0.567745   0.166080   0.219195
+3   0.639483   0.018697   0.678907   0.018614   0.654577   0.040050   0.276016
+4   0.011320   0.089294   0.754462   0.063179   0.011875   0.827947   0.092849
+5   0.060051   0.147725   0.755153   0.129931   0.082244   0.615319   0.165796
+6   0.108696   0.436486   0.686018   0.406607   0.125568   0.300634   0.153773
+  DISTRICT_L                   geometry
+1  24|-2.15% POINT (-73.81657 40.71629)
+2   09|2.28% POINT (-73.93848 40.81299)
+3   12|1.49% POINT (-73.83244 40.88763)
+4  51|-2.13% POINT (-74.20904 40.51958)
+5   02|2.42% POINT (-73.98032 40.74291)
+6  23|-1.73%  POINT (-73.73589 40.7359)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="district-level-analysis-of-tree-coverage" class="level2">
+<h2 class="anchored" data-anchor-id="district-level-analysis-of-tree-coverage">District-Level Analysis of Tree Coverage</h2>
+<section id="question-1.-which-council-district-has-the-most-trees" class="level3">
+<h3 class="anchored" data-anchor-id="question-1.-which-council-district-has-the-most-trees">Question 1. Which council district has the most trees?</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Tree_points <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DISTRICT) <span class="sc">|&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(count, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">"District"</span>, <span class="st">"Count"</span>),   </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">pageLength =</span> <span class="dv">5</span>,                   </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">dom =</span> <span class="st">'t'</span>  ))   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-8658f7840fd2c28e20ce" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8658f7840fd2c28e20ce">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["51","50","19","23","13"],[70962,52417,49936,44900,36660]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>District<\/th>\n      <th>Count<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"dom":"t","columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"DISTRICT","targets":1},{"name":"count","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Council District 51 has the most trees.</p>
+</section>
+<section id="question-2.-which-council-district-has-the-highest-density-of-trees" class="level3">
+<h3 class="anchored" data-anchor-id="question-2.-which-council-district-has-the-highest-density-of-trees">Question 2. Which council district has the highest density of trees?</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Tree_points <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DISTRICT, AREA) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">density =</span> count<span class="sc">/</span> AREA) <span class="sc">|&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(density, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">rownames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">"District"</span>, <span class="st">"Area"</span>, <span class="st">"Count"</span>, <span class="st">"Density"</span>),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">pageLength =</span> <span class="dv">5</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">dom =</span> <span class="st">'t'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-bfac1b03c70e076a71f4" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-bfac1b03c70e076a71f4">{"x":{"filter":"none","vertical":false,"data":[["39","09","16","14","02","35","41","07","15","44"],[4.235947,2.217802,2.228315,1.892041,2.059666,2.849733,2.839911,3.104749,3.671267,3.553707],[32401,13458,13511,10904,11628,15109,14416,15644,18422,17638],[7649.056987729072,6068.170197339528,6063.325876278714,5763.088643427917,5645.575544772793,5301.900213107684,5076.215416609887,5038.7325996401,5017.886195692115,4963.267934019321]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>District<\/th>\n      <th>Area<\/th>\n      <th>Count<\/th>\n      <th>Density<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"dom":"t","columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"name":"DISTRICT","targets":0},{"name":"AREA","targets":1},{"name":"count","targets":2},{"name":"density","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>District 39 has the highest density of trees.</p>
+</section>
+<section id="question-3.-which-district-has-highest-fraction-of-dead-trees-out-of-all-trees" class="level3">
+<h3 class="anchored" data-anchor-id="question-3.-which-district-has-highest-fraction-of-dead-trees-out-of-all-trees">Question 3. Which district has highest fraction of dead trees out of all trees?</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Tree_points <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(DISTRICT) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">dead_trees =</span> <span class="fu">sum</span>(tpcondition <span class="sc">==</span> <span class="st">"Dead"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">fraction_dead_trees =</span> dead_trees <span class="sc">/</span> count) <span class="sc">|&gt;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(fraction_dead_trees, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">rownames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">"District"</span>, <span class="st">"Total Trees"</span>, <span class="st">"Dead Trees"</span>, <span class="st">"Fraction Dead"</span>),</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">pageLength =</span> <span class="dv">10</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">dom =</span> <span class="st">'t'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-79b8142821596351d2da" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-79b8142821596351d2da">{"x":{"filter":"none","vertical":false,"data":[["32","30","02","50","29","16","23","49","11","20"],[30331,23000,11628,52417,19944,13511,44900,35204,27806,20717],[4319,3230,1585,7084,2684,1782,5896,4588,3620,2697],[0.1423955688899146,0.1404347826086957,0.1363089095287238,0.1351469942957438,0.1345768150822302,0.131892532010954,0.1313140311804009,0.130326099306897,0.1301877292670647,0.1301829415455906]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>District<\/th>\n      <th>Total Trees<\/th>\n      <th>Dead Trees<\/th>\n      <th>Fraction Dead<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"dom":"t","columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"name":"DISTRICT","targets":0},{"name":"count","targets":1},{"name":"dead_trees","targets":2},{"name":"fraction_dead_trees","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>District 32 has the highest fraction of dead trees. 14.24% of the district’s trees are dead.</p>
+</section>
+<section id="question-4.-what-is-the-most-common-tree-species-in-manhattan" class="level3">
+<h3 class="anchored" data-anchor-id="question-4.-what-is-the-most-common-tree-species-in-manhattan">Question 4. What is the most common tree species in Manhattan?</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Nyc_Tree <span class="ot">&lt;-</span> Tree_points <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">borough =</span> <span class="fu">case_when</span>(DISTRICT <span class="sc">&gt;=</span> <span class="dv">1</span> <span class="sc">&amp;</span>  DISTRICT <span class="sc">&lt;=</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"Manhattan"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                             DISTRICT <span class="sc">&gt;=</span> <span class="dv">11</span> <span class="sc">&amp;</span> DISTRICT <span class="sc">&lt;=</span> <span class="dv">18</span> <span class="sc">~</span> <span class="st">"Bronx"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                             DISTRICT <span class="sc">&gt;=</span> <span class="dv">19</span> <span class="sc">&amp;</span> DISTRICT <span class="sc">&lt;=</span> <span class="dv">32</span> <span class="sc">~</span> <span class="st">"Queens"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                             DISTRICT <span class="sc">&gt;=</span> <span class="dv">33</span> <span class="sc">&amp;</span> DISTRICT <span class="sc">&lt;=</span> <span class="dv">48</span> <span class="sc">~</span> <span class="st">"Brooklyn"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                             DISTRICT <span class="sc">&gt;=</span> <span class="dv">49</span> <span class="sc">&amp;</span> DISTRICT <span class="sc">&lt;=</span> <span class="dv">51</span> <span class="sc">~</span> <span class="st">"Staten Island"</span>, <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Other"</span>)) </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a> Manhattan_Tree <span class="ot">&lt;-</span> Nyc_Tree <span class="sc">|&gt;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(borough <span class="sc">==</span> <span class="st">"Manhattan"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genusspecies) <span class="sc">|&gt;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Count)) </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a> Manhattan_Tree <span class="sc">|&gt;</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a> <span class="fu">datatable</span>(</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">rownames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">"Species"</span>, <span class="st">"Count"</span>),</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">pageLength =</span> <span class="dv">5</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">dom =</span> <span class="st">'t'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-e49184aafac570fe2905" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e49184aafac570fe2905">{"x":{"filter":"none","vertical":false,"data":[["Gleditsia triacanthos var. inermis - Thornless honeylocust","Quercus palustris - pin oak","Platanus x acerifolia - London planetree","Zelkova serrata - Japanese zelkova","Unknown - Unknown","Styphnolobium japonicum - Japanese pagoda tree","Quercus rubra - northern red oak","Ulmus americana - American elm","Pyrus calleryana - Callery pear","Tilia cordata - littleleaf linden","Ginkgo biloba - maidenhair tree","Robinia pseudoacacia - black locust","Morus - mulberry","Ulmus pumila - Siberian elm","Prunus - Cherry","Celtis occidentalis - common hackberry","Acer platanoides - Norway maple","Gymnocladus dioicus - Kentucky coffeetree","Quercus bicolor - swamp white oak","Liquidambar styraciflua - sweetgum","Tilia americana - American basswood","Ulmus parvifolia - Chinese elm","Quercus phellos - willow oak","Quercus - Oak","Acer rubrum - red maple","Acer - maple","Crataegus - Hawthorn","Metasequoia glyptostroboides - dawn redwood","Malus - apple","Tilia tomentosa - silver linden","Quercus acutissima - sawtooth oak","Gleditsia triacanthos var. inermis 'Skyline' - 'Skyline' Thornless honeylocust","Cercis canadensis - eastern redbud","Quercus imbricaria - shingle oak","Prunus serotina - black cherry","Cornus florida - flowering dogwood","Carpinus betulus - European hornbeam","Liriodendron tulipifera - tuliptree","Quercus alba - white oak","Zelkova serrata 'Green Vase' - 'Green Vase' Zelkova","Ailanthus altissima - tree of heaven","Fraxinus pennsylvanica - Green ash","Eucommia ulmoides - Hardy Rubber Tree","Prunus serrulata 'Green leaf' - 'Green leaf' Japanese flowering cherry","Carpinus caroliniana - American hornbeam","Cladrastis kentukea - Kentucky yellowwood","Juniperus virginiana - eastern redcedar","Koelreuteria paniculata - goldenrain tree","Quercus robur - English oak","Ulmus americana 'Princeton' - 'Princeton' American elm","Platanus x acerifolia 'Bloodgood' - 'Bloodgood' London planetree","Tilia x. europaea - Common linden","Quercus macrocarpa - bur oak","Pinus strobus - eastern white pine","Quercus ellipsoidalis - northern pin oak","Zelkova serrata 'Village Green' - 'Village Green' Zelkova","Acer pseudoplatanus - sycamore maple","Amelanchier - serviceberry","Maackia amurensis - Amur maackia","Prunus cerasifera - cherry plum","Quercus velutina - black oak","Taxodium distichum - bald cypress","Acer saccharum - sugar maple","Quercus shumardii - Shumard's oak","Quercus coccinea - scarlet oak","Quercus lyrata - overcup oak","Tilia tomentosa 'Sterling' - 'Sterling' Silver linden","Platanus x acerfolia 'Exclamation' - 'Exclamation' London planetree","Tilia americana 'McSentry' - 'McSentry' American linden","Tilia tomentosa 'Silver Lining' - 'Silver Lining' Silver linden","Fagus grandifolia - American beech","Gymnocladus dioicus 'Espresso' - 'Espresso' Kentucky coffee tree","Betula nigra - river birch","Ginkgo biloba 'Princeton Sentry' - 'Princeton Sentry' Ginkgo","Cornus mas - Cornelian cherry","Magnolia - magnolia","Pinus - pine","Styphnolobium japonicum 'Millstone' - 'Millstone' Japanese pagodatree","Prunus serrulata 'Not Green leaf' - 'Not Green leaf' Japanese flowering cherry","Acer saccharinum - silver maple","Fraxinus americana - white ash","Amelanchier canadensis - Canadian serviceberry","Nyssa sylvatica - blackgum","Populus deltoides - eastern cottonwood","Syringa reticulata - Japanese tree lilac","Cornus kousa - kousa dogwood","Phellodendron amurense - Amur corktree","Sassafras albidum - sassafras","Acer saccharum 'Commemoration' - 'Commemoration' Sugar maple","Fraxinus - Ash","Ginkgo biloba 'Autumn Gold' - 'Autumn Gold' Ginkgo","Liquidambar styraciflua 'Moraine' - 'Moraine' Sweetgum","Carya glabra - pignut hickory","Nyssa sylvatica 'Wildfire' - 'Wildfire' Black gum","Ostrya virginiana - hophornbeam","Acer rubrum 'Redpointe' - 'Redpointe' Red maple","Crataegus viridis 'Winter King' - 'Winter King' Green hawthorn","Ilex - holly","Paulownia tomentosa - princesstree","Styrax japonicus - Japanese snowbell","Tilia cordata 'Greenspire' - 'Greenspire' Littleleaf linden","Catalpa - catalpa","Chamaecyparis thyoides - Atlantic white cedar","Lagerstroemia - lagerstroemia","Thuja occidentalis - arborvitae","Acer campestre - hedge maple","Amelanchier arborea - common serviceberry","Amelanchier laevis - Allegheny serviceberry","Carya cordiformis - bitternut hickory","Styphnolobium japonicum 'Regent' - 'Regent' Japanese pagodatree","Tilia x. euchlora - Caucasian linden","Tsuga canadensis - eastern hemlock","Aesculus hippocastanum - horse chestnut","Cercidiphyllum japonicum - katsura tree","Crataegus crus-galli var. inermis - Cockspur hawthorn","Cryptomeria japonica - Japanese cedar","Ginkgo biloba 'Magyar' - 'Magyar' Ginkgo","Gleditsia triacanthos - Honeylocust","Malus hupehensis - Chinese crabapple","Ulmus parvifolia 'Allee' - 'Allee' Chinese elm","Acer x freemanii - Freeman maple","Celtis australis - European hackberry","Juglans nigra - black walnut","Acer palmatum - Japanese maple","Betula papyrifera - paper birch","Chionanthus retusus - Chinese fringetree","Juniperus virginiana 'Glauca' - 'Glauca' Eastern red cedar","Platanus occidentalis - American sycamore","Quercus muehlenbergii - chinkapin oak","Tilia mongolica 'Harvest Gold' - 'Harvest Gold' Mongolian linden","Ulmus 'Homestead' - 'Homestead' Elm","Acer rubrum 'Red Sunset' - 'Red Sunset' Red maple","Aesculus x carnea - red horse-chestnut","Betula pendula - European white birch","Carpinus japonica - Japanese hornbeam","Corylus colurna - Turkish hazelnut","Malus floribunda - Japanese flowering crabapple","Taxodium ascendens - pond cypress","Tilia americana 'Redmond' - 'Redmond' American linden","Ulmus 'Frontier' - 'Frontier' Elm","Zelkova serrata 'Mushashino' - 'Mushashino' Zelkova","Acer negundo - boxelder","Carya - Hickory","Cercis reniformis - Oklahoma redbud","Chamaecyparis lawsoniana - Port Orford cedar","Metasequoia glyptostroboides 'Gold Rush' - 'Gold Rush' Dawn redwood","Parrotia persica - Persian ironwood","Picea pungens - blue spruce","Prunus subhirtella 'Pendula' - 'Pendula' Higan cherry","Prunus virginiana - chokecherry","Syringa pekinensis - Peking tree lilac","Thuja 'Green Giant' - 'Green Giant' Arborvitae","Ulmus 'Athena' - 'Athena' Elm","Ulmus 'Triumph' - 'Triumph' Elm","Acer griseum - paperbark maple","Aesculus hippocastanum 'Baumanni' - 'Baumanni' Horsechestnut","Hamamelis x intermedia 'Diane' - 'Diane' Witch hazel","Liquidambar styraciflua 'Slender Silhouette' - 'Slender Silhouette' Sweetgum","Picea - spruce","Platanus x acerifolia 'Columbia' - 'Columbia' London planetree","Prunus serrulata - Japanese flowering cherry","Quercus 'Regal Prince' - 'Regal Prince' Oak","Acer campestre 'Metro Gold' - 'Metro Gold' Hedge maple","Acer ginnala - Amur maple","Acer platanoides 'Crimson King' - 'Crimson King' Norway maple","Acer truncatum 'Pacific Sunset' - 'Pacific Sunset' Shangtung maple","Acer x freemanii 'Autumn Blaze' - 'Autumn Blaze' Freeman maple","Aesculus x carnea 'Fort Mcnair' - 'Fort Mcnair' Ruby red horsechestnut","Betula lenta - sweet birch","Catalpa speciosa - northern catalpa","Cedrus atlantica - Atlas cedar","Ginkgo biloba 'Windover Gold' - 'Windover Gold' Ginkgo","Hamamelis virginiana - American witchhazel","Ilex opaca - American holly","Liquidambar styraciflua 'Happidaze' - 'Happidaze' Sweetgum","Maclura pomifera - osage orange","Picea glauca - white spruce","Quercus falcata - southern red oak","Quercus macrocarpa 'Urban Pinnacle' - 'Urban Pinnacle' bur oak","Robinia pseudoacacia 'Frisia' - 'Frisia' Black locust","Taxus baccata - English yew","Acer rubrum 'Autumn Blaze' - 'Autumn Blaze' Red maple","Acer rubrum 'Frank Jr.' -  'Frank Jr.' red maple","Amelanchier 'Autumn Brilliance' - 'Autumn Brilliance' Serviceberry","Betula populifolia - gray birch","Carpinus betulus 'Emerald Avenue' - 'Emerald Avenue' European hornbeam","Carya ovata - shagbark hickory","Castanea mollissima - Chinese chestnut","Chamaecyparis pisifera - sawara-cypress","Cotinus coggygria - European smoketree","Fagus sylvatica - European beech","Gleditsia triacanthos var. inermis 'Halka' - 'Halka' Thornless honeylocust","Koelreuteria paniculata 'Rose Lanterns' - 'Rose Lanterns' Goldenraintree","Magnolia grandiflora - southern magnolia","Malus ioensis - prairie crabapple","Pinus resinosa - red pine","Pinus thunbergii - Japanese black pine","Prunus 'Okame' - 'Okame' Cherry","Prunus cerasifera 'Crimson Point' - 'Crimson Point' Cherry plum","Prunus serrulata 'Kwanzan' - 'Kwanzan' Flowering cherry","Quercus montana - Chestnut oak","Quercus robur var. fastigiata - Upright english oak","Robinia pseudoacacia 'Purple Robe' - 'Purple Robe' Black locust","Salix alba - white willow","Salix babylonica - Weeping willow","Taxodium ascendens 'Morris Debonair' - 'Morris Debonair' Bald cypress","Tilia cordata 'Corinthian' - 'Corinthian' Littleleaf linden","Ulmus propinqua 'Emerald Sunshine' - 'Emerald Sunshine' Elm","Zelkova serrata 'Halka' - 'Halka' Zelkova","Acer buergerianum - trident maple","Acer platanoides 'Not Green Leaf' - 'Not Green Leaf' Norway maple","Acer rubrum 'Armstrong' - 'Armstrong' Red maple","Acer rubrum 'October Glory' - 'October Glory' Red maple","Acer tataricum - tatarian maple","Aesculus glabra - Ohio buckeye","Betula platyphylla - Asian white birch","Chamaecyparis obtusa 'Crippsii' - 'Crippsii' Golden hinoki cypress","Cornus x rutban 'Aurora' - 'Aurora' Dogwood","Elaeagnus angustifolia - Russian olive","Gleditsia triacanthos var. inermis 'Streetkeeper' - 'Streetkeeper' Thornless honeylocust","Halesia diptera - Two-wing silverbell","Juniperus chinensis 'Hetzii' - 'Hetzii' Chinese juniper","Juniperus chinensis - Chinese juniper","Lagerstroemia indica - Crape Myrtle","Liquidambar styraciflua 'Cherokee' - 'Cherokee' Sweetgum","Magnolia 'Butterflies' - 'Butterflies' Magnolia","Malus 'Royal Raindrops' - 'Royal Raindrops' Crabapple","Malus x zumi var. calocarpa - Redbud crabapple","Nyssa sylvatica 'Tupelo Tower' - 'Tupelo Tower' Black gum","Oxydendrum arboreum - sourwood","Parrotia persica 'Ruby Vase' - 'Ruby Vase' Persian ironwood","Picea abies - Norway spruce","Prunus sargentii - Sargent cherry","Prunus virginiana 'Canada Red' - 'Canada Red' Chokecherry","Pseudotsuga menziesii - Douglas-fir","Quercus ilex - holly oak","Quercus palustris 'Green Pillar' - 'Green Pillar' Pin oak","Quercus palustris 'Pacific Brilliance' - 'Pacific Brilliance' Pin oak","Taxodium distichum 'Shawnee Brave' - 'Shawnee Brave' Bald cypress","Tilia americana 'Boulevard' - 'Boulevard' American linden","Ulmus 'Patriot' - 'Patriot' Elm","Ulmus minor 'Atinia' - English elm"],[1425,1113,831,743,606,564,556,542,462,461,423,370,328,290,286,255,253,242,234,219,218,181,170,166,165,159,158,156,153,124,119,110,103,97,95,93,85,84,75,73,72,68,67,67,63,62,60,54,53,53,51,51,49,47,47,46,41,39,39,37,37,37,35,35,34,33,33,32,31,30,28,27,26,25,24,24,23,22,21,20,19,18,17,17,17,16,16,16,15,15,15,14,13,13,13,12,12,12,12,12,12,11,11,11,11,10,10,10,10,10,10,10,9,9,9,9,9,9,9,9,8,8,8,7,7,7,7,7,7,7,7,6,6,6,6,6,6,6,6,6,6,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Species<\/th>\n      <th>Count<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"dom":"t","columnDefs":[{"className":"dt-right","targets":1},{"name":"genusspecies","targets":0},{"name":"Count","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>The most common tree species in Manhattan is the Thornless Honeylocust.</p>
+</section>
+<section id="question-5.-what-is-the-species-of-the-tree-closest-to-baruchs-campus" class="level3">
+<h3 class="anchored" data-anchor-id="question-5.-what-is-the-species-of-the-tree-closest-to-baruchs-campus">Question 5. What is the species of the tree closest to Baruch’s campus?</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>new_st_point <span class="ot">&lt;-</span> <span class="cf">function</span>(lat, lon, ...){</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sfc</span>(<span class="at">point =</span> <span class="fu">st_point</span>(<span class="fu">c</span>(lon, lat))) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_set_crs</span>(<span class="st">"WGS84"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>Baruch_College <span class="ot">&lt;-</span> <span class="fu">new_st_point</span>(<span class="at">lat =</span> <span class="fl">40.7404</span>, <span class="at">lon =</span> <span class="sc">-</span><span class="fl">73.9832</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>Baruch_College <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(Baruch_College, <span class="fu">st_crs</span>(Tree_points))</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>Closest_Tree <span class="ot">&lt;-</span> Tree_points <span class="sc">|&gt;</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">distance =</span> <span class="fu">st_distance</span>(geometry, Baruch_College)) <span class="sc">|&gt;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_min</span>(distance, <span class="at">n =</span> <span class="dv">5</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  Closest_Tree <span class="sc">|&gt;</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(genusspecies, DISTRICT, distance) <span class="sc">|&gt;</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">rownames =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">"Species"</span>, <span class="st">"District"</span>, <span class="st">"Distance (m)"</span>),</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">pageLength =</span> <span class="dv">5</span>,</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">dom =</span> <span class="st">'t'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-798e90adfe6b653322b9" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-798e90adfe6b653322b9">{"x":{"filter":"none","vertical":false,"data":[["Liquidambar styraciflua - sweetgum","Gleditsia triacanthos - Honeylocust","Pyrus calleryana - Callery pear","Liquidambar styraciflua - sweetgum","Pyrus calleryana - Callery pear","Liquidambar styraciflua - sweetgum"],["02","02","02","02","02","02"],[[5.861946620730438],[13.13565534603423],[16.54727045557228],[17.12599825617538],[17.47753530083438],[17.47753530083438]]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Species<\/th>\n      <th>District<\/th>\n      <th>Distance (m)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"dom":"t","columnDefs":[{"className":"dt-right","targets":2},{"name":"genusspecies","targets":0},{"name":"DISTRICT","targets":1},{"name":"distance","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>The Tree Species closest to Baruch College is the Sweetgum.</p>
+</section>
+</section>
+<section id="government-project-design" class="level2">
+<h2 class="anchored" data-anchor-id="government-project-design">Government Project Design</h2>
+<section id="proposal" class="level4">
+<h4 class="anchored" data-anchor-id="proposal"><span style="color: #003366;"><strong>Proposal</strong></span></h4>
+<p>Residents of District 26 have experienced increasing incidents of street trees falling or dropping large limbs onto parked vehicles, resulting in significant property damage, insurance claims, and potential safety hazards for pedestrians. We request dedicated funding to establish a comprehensive Tree Risk Assessment Program.</p>
+<ul>
+<li><p>Conduct inspections of aging and potentially hazardous trees along District 26 streets</p></li>
+<li><p>Prioritize areas and blocks with documented tree-related incidents</p></li>
+<li><p>Identify trees requiring maintenance, cabling, or removal before they cause damage</p></li>
+</ul>
+</section>
+<section id="data-plots" class="level4">
+<h4 class="anchored" data-anchor-id="data-plots"><span style="color: #003366;"><strong>Data Plots</strong></span></h4>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Tree_points <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(DISTRICT <span class="sc">==</span> <span class="st">"26"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(tpcondition) <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">tree_count =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">|&gt;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> tpcondition, <span class="at">y =</span> tree_count, <span class="at">fill =</span> tpcondition)) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Tree Count by Condition in District 26"</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tree Condition"</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Trees"</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mp03_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>district_26 <span class="ot">&lt;-</span> data1_Tr <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(DISTRICT <span class="sc">==</span> <span class="st">"26"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>trees_26 <span class="ot">&lt;-</span> <span class="fu">st_filter</span>(combined_trees_dataframes, district_26)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>trees_26_healthy <span class="ot">&lt;-</span> trees_26 <span class="sc">|&gt;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>tpcondition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Poor"</span>, <span class="st">"Critical"</span>, <span class="st">"Dead"</span>))</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>trees_26_unhealthy <span class="ot">&lt;-</span> trees_26 <span class="sc">|&gt;</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(tpcondition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Poor"</span>, <span class="st">"Critical"</span>, <span class="st">"Dead"</span>))</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> district_26,</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"lightgray"</span>,</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> trees_26_healthy,</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> <span class="fl">0.4</span>,</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> trees_26_unhealthy,</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>          <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> <span class="fl">0.4</span>,</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"District 26 Tree Points"</span>,</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Red = Poor/Critical/Dead trees, Green = Healthy trees"</span>) <span class="sc">+</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mp03_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ppiatkow55\.github\.io\/STA9750-2025-FALL\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
