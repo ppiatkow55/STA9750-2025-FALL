@@ -12,7 +12,7 @@ execute:
 
 
 ## Introduction
-This project examines how trees are distributed across New York City's council districts. The objective is to assess the urban forest canopy, pinpoint areas with insufficient tree coverage or maintenance, and develop an evidence-based proposal that promotes equitable and sustainable tree growth citywide.
+This project examines how trees are distributed across New York City's council districts. The objective is to assess the urban forest canopy, pinpoint areas with insufficient tree coverage or maintenance, and develop an evidence-based proposal that promotes equitable and sustainable tree growth citywide
 
 
 ##  Data Acquisition
