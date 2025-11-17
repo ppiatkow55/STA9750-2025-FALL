@@ -17,14 +17,8 @@ website:
       - text: "Mini Project 02" 
         href: "./mp02.html"
 =======
-      - text: "Mini Project 02"
-<<<<<<< HEAD
-        href: "./Mp2.html"
->>>>>>> 094636d (mp2)
-=======
-        href: "./mp02.html"
->>>>>>> 934ae17 (mp2)
-      - text: "MP3" 
+      - text: "Mini Project 03"
+        href: "./mp03.html"
       - text: "MP4"
     
 format:
