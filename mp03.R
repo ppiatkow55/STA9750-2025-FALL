@@ -1,0 +1,413 @@
+library(tidyverse)
+library(sf)
+library(dplyr)
+library(httr2)
+
+
+
+if(!dir.exists(file.path("data", "mp03"))){
+  dir.create(file.path("data", "mp03"), showWarnings=FALSE, recursive=TRUE)}
+
+setwd("~/Downloads")
+unzip("20221006-Final-Plan-Districts.zip")
+data1 <- st_read("~/Downloads/Districts 2022-10-06.shp")
+data1_Tr <- st_transform(data1, crs = "WGS84") 
+dir.create("data/mp03", recursive = TRUE)
+
+
+trees_data <- "https://data.cityofnewyork.us/resource/hn5i-inap.geojson"
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 0) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees <- st_read(resp_body_string(api_trees))
+
+###################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 50000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees1 <- st_read(resp_body_string(api_trees))
+
+#########################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 100000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees2 <- st_read(resp_body_string(api_trees))
+
+#########################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 150000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees3 <- st_read(resp_body_string(api_trees))
+
+########################################################
+
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 200000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees4 <- st_read(resp_body_string(api_trees))
+
+########################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 250000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees5 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 300000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees6 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 350000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees7 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 400000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees8 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 450000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees9 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 500000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees10 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 550000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees11 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 600000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees12 <- st_read(resp_body_string(api_trees))
+
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 650000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees13 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 700000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees14 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 750000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees15 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 800000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees16 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 850000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees17 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 900000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees18 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 950000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees19 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 1000000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees20 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+api_trees <- request(trees_data) |>
+  req_url_query('$limit' = 50000, '$offset' = 1050000) |>
+  req_retry(max_tries=6) |>
+  req_perform()
+
+NY_Trees21 <- st_read(resp_body_string(api_trees))
+
+##############################################################
+
+trees_dataframes <- list(NY_Trees, NY_Trees1, NY_Trees2, NY_Trees3, NY_Trees4, NY_Trees5, 
+                         NY_Trees6, NY_Trees7, NY_Trees8, NY_Trees9, NY_Trees10, NY_Trees11,
+                         NY_Trees12, NY_Trees13,NY_Trees14, NY_Trees15, NY_Trees16, NY_Trees17, 
+                         NY_Trees18, NY_Trees19, NY_Trees20, NY_Trees21)
+combined_trees_dataframes <- bind_rows(trees_dataframes)
+
+library(ggplot2)
+
+
+ggplot() +
+  geom_sf(data = data1_Tr,
+          fill = "lightgray",
+          color = "black",
+          size = 0.5) +
+  geom_sf(data = combined_trees_dataframes,
+         alpha = 0.01,
+         size = 0.2,
+         color = "darkgreen") +
+  labs(title = "NYC Tree Points")
+
+
+Tree_points <- st_join(combined_trees_dataframes, data1_Tr,
+                       join = st_intersects)
+head(Tree_points)
+
+########################################
+
+
+# Question 1 
+
+library(DT)
+
+Tree_points |>
+  st_drop_geometry() |>
+  group_by(DISTRICT) |>
+  summarize(count = n()) |>
+  slice_max(count, n = 5) |>
+  datatable(
+  colnames = c("District", "Count"),   
+  options = list(
+    pageLength = 5,                   
+    dom = 't'  ))   
+
+#Question 2
+
+Tree_points |>
+  st_drop_geometry() |>
+  group_by(DISTRICT, AREA) |>
+  summarize(count = n(), .groups = "drop") |>
+  mutate(density = count/ AREA) |>
+  slice_max(density, n = 10) |>
+  datatable(
+    rownames = FALSE,
+    colnames = c("District", "Area", "Count", "Density"),
+    options = list(
+      pageLength = 5,
+      dom = 't'))
+
+# Question 3
+
+Tree_points |>
+  st_drop_geometry() |>
+  group_by(DISTRICT) |>
+  summarize(count = n(),
+            dead_trees = sum(tpcondition == "Dead", na.rm = TRUE),
+            fraction_dead_trees = dead_trees / count) |>
+  slice_max(fraction_dead_trees, n = 10) |>
+  datatable(
+    rownames = FALSE,
+    colnames = c("District", "Total Trees", "Dead Trees", "Fraction Dead"),
+    options = list(
+      pageLength = 10,
+      dom = 't'))
+
+#Question 4
+
+
+ Nyc_Tree <- Tree_points |>
+  mutate(borough = case_when(DISTRICT >= 1 &  DISTRICT <= 10 ~ "Manhattan",
+                             DISTRICT >= 11 & DISTRICT <= 18 ~ "Bronx",
+                             DISTRICT >= 19 & DISTRICT <= 32 ~ "Queens",
+                             DISTRICT >= 33 & DISTRICT <= 48 ~ "Brooklyn",
+                             DISTRICT >= 49 & DISTRICT <= 51 ~ "Staten Island", TRUE ~ "Other")) 
+ 
+ Manhattan_Tree <- Nyc_Tree |>
+  filter(borough == "Manhattan") |>
+  st_drop_geometry() |>
+  group_by(genusspecies) |>
+  summarize(Count = n()) |>
+  arrange(desc(Count)) 
+ 
+ Manhattan_Tree |>
+ datatable(
+     rownames = FALSE,
+     colnames = c("Species", "Count"),
+     options = list(
+       pageLength = 5,
+       dom = 't'))
+ 
+ # Question 5
+ 
+ new_st_point <- function(lat, lon, ...){
+   st_sfc(point = st_point(c(lon, lat))) |>
+     st_set_crs("WGS84")
+ }
+ 
+Baruch_College <- new_st_point(lat = 40.7404, lon = -73.9832)
+
+Baruch_College <- st_transform(Baruch_College, st_crs(Tree_points))
+
+Closest_Tree <- Tree_points |>
+  mutate(distance = st_distance(geometry, Baruch_College)) |>
+  slice_min(distance, n = 5) |>
+  st_drop_geometry() |>
+  select(genusspecies, DISTRICT, distance) |>
+  datatable(
+    rownames = FALSE,
+    colnames = c("Species", "District", "Distance (m)"),
+    options = list(
+      dom = 't'))
+
+
+new_st_point <- function(lat, lon, ...){
+  st_sfc(point = st_point(c(lon, lat))) |>
+    st_set_crs("WGS84")
+}
+
+Baruch_College <- new_st_point(lat = 40.7404, lon = -73.9832)
+
+Baruch_College <- st_transform(Baruch_College, st_crs(Tree_points))
+
+Closest_Tree <- Tree_points |>
+  mutate(distance = st_distance(geometry, Baruch_College)) |>
+  slice_min(distance, n = 5) |>
+  
+  Closest_Tree |>
+  select(genusspecies, DISTRICT, distance) |>
+  st_drop_geometry() |>
+  datatable(
+    rownames = FALSE,
+    colnames = c("Species", "District", "Distance (m)"),
+    options = list(
+      pageLength = 5,
+      dom = 't'))
+
+
+Tree_points |>
+  filter(DISTRICT == "26") |>
+  group_by(tpcondition) |>
+  summarize(tree_count = n()) |>
+  st_drop_geometry() |>
+  ggplot(aes(x = tpcondition, y = tree_count, fill = tpcondition)) +
+  geom_col() +
+  labs(
+    title = "Tree Count by Condition in District 26",
+    x = "Tree Condition",
+    y = "Number of Trees"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5))
+
+####################################
+
+district_26 <- data1_Tr |>
+  filter(DISTRICT == "26")
+
+
+trees_26 <- st_filter(combined_trees_dataframes, district_26)
+
+
+
+trees_26_healthy <- trees_26 |>
+  filter(!tpcondition %in% c("Poor", "Critical", "Dead"))
+
+trees_26_unhealthy <- trees_26 |>
+  filter(tpcondition %in% c("Poor", "Critical", "Dead"))
+
+ggplot() +
+  geom_sf(data = district_26,
+          fill = "lightgray",
+          color = "black",
+          linewidth = 0.5) +
+  geom_sf(data = trees_26_healthy,
+          alpha = 0.5,
+          size = 0.4,
+          color = "darkgreen") +
+  geom_sf(data = trees_26_unhealthy,
+          alpha = 0.5,
+          size = 0.4,
+          color = "red") +
+  labs(title = "District 26 Tree Points",
+       subtitle = "Red = Poor/Critical/Dead trees, Green = Healthy trees") +
+  theme_minimal()
