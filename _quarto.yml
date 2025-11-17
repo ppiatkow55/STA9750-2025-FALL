@@ -13,10 +13,8 @@ website:
     right:
       - text: "Mini Project 01"
         href: "./Mp1.html"
-<<<<<<< HEAD
       - text: "Mini Project 02" 
         href: "./mp02.html"
-=======
       - text: "Mini Project 03"
         href: "./mp03.html"
       - text: "MP4"
