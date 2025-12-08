@@ -1,0 +1,354 @@
+---
+title: "Mini-Project #04"
+subtitle: "Just the Fact(-Check)s, Ma’am!" 
+code-fold: true 
+toc: true 
+toc-depth: 10
+execute: 
+  echo: true 
+  warning: false 
+  message: false
+---
+
+
+## Data Acquisition
+
+
+```{r results='hide'}
+
+library(tidyverse)
+library(httr2)
+library(rvest)
+library(lubridate)
+library(DT)
+library(scales)
+library(infer)
+
+
+
+Dir <- file.path("data", "mp04")
+if (!dir.exists(Dir)) {
+  dir.create(Dir, showWarnings = FALSE, recursive = TRUE)
+}
+
+
+CES <- file.path(Dir, "ces_levels.rds")
+CESR <- file.path(Dir, "ces_revisions.rds")
+
+func_ces <- function() {
+  
+  
+  if (file.exists(CES)) {
+    return(readRDS(CES))
+  }
+  
+  
+  response <- request("https://data.bls.gov/pdq/SurveyOutputServlet") |>
+    req_method("POST") |>
+    req_headers(
+      "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      "Content-Type" = "application/x-www-form-urlencoded"
+    ) |>
+    req_body_form(
+      request_action = "get_data",
+      reformat = "true",
+      from_results_page = "true",
+      from_year = "1979",
+      to_year = "2025",
+      Go.x = "13",
+      Go.y = "10",
+      initial_request = "false",
+      data_tool = "surveymost",
+      series_id = "CES0000000001",
+      original_annualAveragesRequested = "false"
+    ) |>
+    req_timeout(120) |>
+    req_perform()
+  
+  
+  html_content <- resp_body_html(response)
+  tables <- html_content |> 
+    html_elements("table") |> 
+    html_table()
+  
+  
+  ces2 <- tables[[2]] |>
+    pivot_longer(
+      cols = Jan:Dec,
+      names_to = "month",
+      values_to = "level"
+    ) |>
+    mutate(
+      level = as.numeric(str_remove_all(level, ",")),
+      date = ym(paste(Year, month))
+    ) |>
+    select(date, level) |>
+    drop_na() |>
+    arrange(date)
+  
+  saveRDS(ces2, CES)
+  message("Saved ", nrow(ces2), " observations to cache")
+  
+  return(ces2)
+}
+
+
+func_cesr <- function() {
+  
+ 
+  if (file.exists(CESR)) {
+    return(readRDS(CESR))
+  }
+  
+  message("Fetching CES revisions from BLS website...")
+  
+  response <- request("https://www.bls.gov/web/empsit/cesnaicsrev.htm") |>
+    req_headers(
+      "User-Agent" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    ) |>
+    req_timeout(60) |>
+    req_perform()
+  
+  
+  html_content <- resp_body_html(response)
+  
+  years <- 1979:2025
+  
+  cesr2 <- years |>
+    map(function(yr) {
+      extract_year_revisions(html_content, yr)
+    }) |>
+    list_rbind()
+  
+  
+  saveRDS(cesr2, CESR)
+  message("Saved ", nrow(cesr2), " revision observations to cache")
+  
+  return(cesr2)
+}
+
+CES <- func_ces() 
+
+
+CESR <- func_cesr() 
+
+if ("date" %in% names(CES)) {
+  CES <- CES |> rename(Date = date, Level = level)
+}
+if ("date" %in% names(CESR)) {
+  CESR <- CESR |> rename(Date = date, Original = original, Final = final, Revision = revision)}
+
+
+```
+
+
+## Task 1: Download CES Total Nonfarm Payroll
+
+```{r}
+
+datatable(
+  CES,
+  caption = 'CES Total Nonfarm Payroll Employment (Seasonally Adjusted)',
+  colnames = c('Date', 'Level'),
+  rownames = FALSE,
+  options = list(
+    pageLength = 10,
+    scrollY = '500px',
+    scrollCollapse = TRUE,
+    searching = FALSE
+  )) 
+  
+
+
+
+```
+
+## Task 2: Download CES Revisions Tables
+
+
+
+```{r}
+datatable(
+  CESR,
+  caption = 'CES Employment Revisions',
+  colnames = c('Date', 'Original', 'Final', 'Revision'),
+  rownames = FALSE,
+  options = list(
+    pageLength = 10,
+    scrollY = '500px',
+    scrollCollapse = TRUE,
+    searching = FALSE
+  )) 
+```
+
+## Task 3: Data Exploration and Visualization
+### Table Join
+
+
+```{r}
+
+CES_combined <- CES |>
+  left_join(CESR, by = "Date") |>
+  arrange(desc(Date))
+
+```
+
+
+### Statistics
+
+
+```{r}
+
+
+mean_level <- CES_combined |>
+  specify(response = Level) |>
+  calculate(stat = "mean")
+
+median_level <- CES_combined |>
+  specify(response = Level) |>
+  calculate(stat = "median")
+
+
+sd_level <- CES_combined |>
+  specify(response = Level) |>
+  calculate(stat = "sd")
+
+summary_stats <- data.frame(
+  Statistic = c("Mean", "Median", "Standard Deviation"),
+  Value = c(mean_level$stat, median_level$stat, sd_level$stat)
+)
+
+datatable(
+  summary_stats,
+  caption = 'Summary Statistics for CES Employment Level',
+  rownames = FALSE,
+  options = list(
+    dom = 't',
+    pageLength = 3
+  )
+) |>
+  formatRound(columns = 'Value', digits = 2)
+
+CES_with_metrics <- CES_combined %>%
+  mutate(
+    Positive_Revision = Revision > 0,
+    Negative_Revision = Revision < 0,
+    Revision_Pct = (Revision / Original) * 100,
+    Absolute_Revision = abs(Revision_Pct) > 50
+  )
+
+revision_summary <- data.frame(
+  Metric = c(
+    "Proportion of Positive Revisions",
+    "Proportion of Negative Revisions",
+    "Proportion of Large Revisions (>50%)"
+  ),
+  Value = c(
+    mean(CES_with_metrics$Positive_Revision, na.rm = TRUE),
+    mean(CES_with_metrics$Negative_Revision, na.rm = TRUE),
+    mean(CES_with_metrics$Absolute_Revision, na.rm = TRUE)
+  )
+)
+
+datatable(
+  revision_summary,
+  caption = 'Summary Statistics for Revision Metrics',
+  rownames = FALSE,
+  options = list(
+    dom = 't',
+    pageLength = 5
+  )
+) |>
+  formatPercentage(columns = 'Value', digits = 2, 
+                   rows = c(1, 2)) |>
+  formatRound(columns = 'Value', digits = 2)
+              
+
+
+
+
+
+```
+
+### Visualization
+
+```{r}
+
+ggplot(CES, aes(x = Date, y = Level)) +
+  geom_line(color = "steelblue") +
+  labs(
+    title = "CES Total Nonfarm Payroll Employment",
+    subtitle = "Seasonally Adjusted",
+    x = "Date",
+    y = "Employment Level"
+  ) +
+  theme_bw()
+
+
+```
+
+```{r}
+
+
+
+
+ggplot(CESR, aes(x = Date, y = Revision)) +
+  geom_col(aes(fill = Revision > 0)) +
+  scale_fill_manual(values = c("red", "steelblue"), 
+                    labels = c("Downward", "Upward")) +
+  labs(
+    title = "CES Employment Revisions",
+    x = "Date",
+    y = "Revision (thousands)",
+    fill = "Direction"
+  ) +
+  theme_minimal() +
+  geom_hline(yintercept = 0, linetype = "dashed")
+
+
+```
+
+###  Statistical Inference
+There is no statistically significant difference in employment revisions between the pre-2020 period and post-2020 period. The p-value is .487 which is greater than .05. The upper and lower bounds cross zero. We cannot conclude that there is a systemic difference.  
+
+```{r}
+
+CES_with_metrics <- CES_combined |>
+  mutate(
+    Year = as.numeric(format(Date, "%Y")),
+    Post2020 = Year >= 2020
+  )
+
+revision_ttest <- CES_with_metrics |>
+  t_test(response = Revision,
+         explanatory = Post2020,
+         order = c(TRUE, FALSE),
+         alternative = "two-sided")
+
+
+datatable(
+  revision_ttest,
+  caption = 'T-Test Results: Revisions Pre-2020 vs Post-2020',
+  rownames = FALSE,
+  options = list(
+    dom = 't',
+    pageLength = 1
+  )
+) |>
+  formatRound(columns = c('statistic', 't_df', 'p_value', 'estimate', 
+                          'lower_ci', 'upper_ci'), 
+              digits = 3)
+
+
+
+```
+
+```{r}
+
+
+
+
+
+
+```
+

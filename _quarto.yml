@@ -17,8 +17,8 @@ website:
         href: "./mp02.html"
       - text: "Mini Project 03"
         href: "./mp03.html"
-      - text: "MP4"
-    
+      - text: "Mini Project 04"
+        href: "./mp04.html"
 format:
   html:
     theme: cerulean
