@@ -3,23 +3,22 @@ library(lubridate)
 library(dplyr)
 
 
-# import film permits data
+
 permits <- read_csv("https://raw.githubusercontent.com/NewYorkCityCouncil/film_industry_hearing/refs/heads/master/permits.csv") 
 
-# write to csv for safekeeping
 write_csv(permits, file = "permits_data.csv")
 
 
 
-Recent_Permits <- read.csv("Film_Permits_20251105.csv")
+Recent_Permits <- read.csv("https://raw.githubusercontent.com/ppiatkow55/STA9750-2025-FALL/refs/heads/main/Film_Permits_20251105.csv")
 
+write_csv(permits, file = "Recent_Permits.csv")
 
 
 permits_found <- read_csv("https://raw.githubusercontent.com/NewYorkCityCouncil/film_industry_hearing/refs/heads/master/permits_mar23.csv")
-# write to csv for safekeeping
-write_csv(permits, file = "permits_found.csv")
 
-library(dplyr)
+write_csv(permits, file = "permits_found.csv") 
+
 
 
 Table1 <- Recent_Permits |>
@@ -37,24 +36,48 @@ combined <- full_join(Table1, Table2)
 
 
 
-                      
-                    
-
-
 
 One_Recent_Permits <- Recent_Permits |>
 rename(eventid = EventID, eventtype = EventType) 
 
 
-  
-  
-select(-zipcode_s, -country, -subcategoryname, -category, 
-       -policeprecinct_s, -communityboard_s, -borough,
-       -parkingheld, -eventagency, -enteredon, -enddatetime, -startdatetime, -eventtype) |>
-  group_by(EventType)|>
-  summarise(count = n()) |>
-glimpse()
+
+combined1 <- combined |>
+  select(-parkingheld)
 
 
-combined <- full_join(One_Recent_Permits, permits_found, by = c("eventid","eventtype"))
-# Keep everything
+
+
+large_permits <- permits |>
+  distinct(eventid, .keep_all = TRUE) |>
+  select(-main, -cross_st_1, -cross_st_2) |>
+  rename(policeprecinct.s.= policeprecinct_s, communityboard.s. = communityboard_s, zipcode.s. = zipcode_s)
+
+
+  clean_permits <- full_join(combined1, large_permits)
+  
+  clean_permits <- clean_permits |>
+    filter(startdatetime >= as.Date("2013-01-01") & startdatetime <= as.Date("2023-12-31"), 
+           eventtype == ("Shooting Permit")) |>
+    separate_rows(zipcode.s., sep = ",\\s*") |>
+    mutate(zipcode = trimws(zipcode.s.),
+           start_year = year(startdatetime),
+           start_month = month(startdatetime),
+           start_day = day(startdatetime),
+           end_year = year(enddatetime),
+           end_month = month(enddatetime),
+           end_day = day(enddatetime)) |>
+    select(-communityboard.s., -policeprecinct.s., -country, -zipcode.s., - enteredon, -startdatetime, -enddatetime) |>
+    relocate(eventid, eventtype, start_year, start_month, start_day, end_year, end_month, end_day)
+  
+  clean_permits <- clean_permits |>
+    group_by(zipcode, start_year) |>
+    mutate(zip_count_by_year = n()) |>
+    group_by(zipcode, start_year, start_month) |>
+    mutate(zip_count_by_month = n()) |>
+    group_by(zipcode) |>
+    mutate(zip_count_total = n()) |>
+    ungroup()
+  
+  
+  
