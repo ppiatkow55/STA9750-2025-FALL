@@ -13,6 +13,9 @@ format:
     theme: cosmo
 ---
 
+![Cortlandt Alley](https://upload.wikimedia.org/wikipedia/commons/d/d0/Cortlandt_Alley.jpg)
+
+
 ## Introduction
 
 For decades, dreamers from every corner of the country and the world have relocated to New York City to experience all that the Big Apple has to offer. Most comes to the city with a romanticized idea about life in New York. These ideas are shaped by movies, tv shows, news, and other media.
@@ -338,35 +341,103 @@ ggplot(plot_data, aes(x = start_year, y = Productions, color = Neighborhood)) +
   theme_minimal()
 ```
 
-Greenpoint, Brooklyn emerges as the dominant film production hotspot, consistently leading all neighborhoods with over 900 annual productions and a positive average year-over-year growth rate of (+2.7%). Long Island City, Queens holds the second position, though its trajectory shows a slight decline (-0.7%) over the period. Notably, most Manhattan neighborhoods are experiencing declining production activity, Hell's Kitchen (-8.8%), Hudson Yards (-7.8%), and Midtown West (-6.6%) show the steepest drops, suggesting a shift away from traditional Manhattan filming locations. Chelsea, East Village, SoHo, and Brooklyn Heights follow similar downward trends. The only exception is Chinatown, which shows modest growth (+0.8%). This pattern reveals a broader geographic shift in NYC's film industry, production is migrating from Manhattan's historically popular neighborhoods toward Brooklyn, with Greenpoint establishing itself as the city's premier filming destination.
+Greenpoint, Brooklyn emerges as the dominant film production hotspot, consistently leading all neighborhoods with over 900 annual productions and a positive average year-over-year growth rate of (+2.7%). Long Island City, Queens holds the second position, though its trajectory shows a slight decline (-0.7%) over the period. Notably, most Manhattan neighborhoods are experiencing declining production activity, Hell's Kitchen (-8.8%), Hudson Yards (-7.8%), and Midtown West (-6.6%) show the steepest drops, suggesting a shift away from traditional Manhattan filming locations. Chelsea, East Village, SoHo, and Brooklyn Heights follow similar downward trends. The only exception is Chinatown, which shows modest growth (+0.8%). 
+
+This pattern suggests a shift in NYC's film industry, production may be migrating from Manhattan's historically popular neighborhoods toward Greenpoint which establishes itself as the city's premier filming destination. More analysis is needed to determine correllation. 
 
 ```{r}
 
-borough_yearly <- clean_permits |>
-  filter(borough %in% c("Manhattan", "Brooklyn")) |>
-  filter(!start_year %in% c(2020, 2023)) |>  
-  group_by(start_year, borough) |>
-  summarise(Productions = n(), .groups = "drop")
+greenpoint_yearly <- clean_permits |>
+  filter(zipcode == 11222) |>
+  filter(!start_year %in% c(2020, 2023)) |>
+  group_by(start_year) |>
+  summarise(Greenpoint = n(), .groups = "drop")
 
 
-borough_wide <- borough_yearly |>
-  pivot_wider(names_from = borough, values_from = Productions)
+manhattan_yearly <- clean_permits |>
+  filter(borough == "Manhattan") |>
+  filter(!start_year %in% c(2020, 2023)) |>
+  group_by(start_year) |>
+  summarise(Manhattan = n(), .groups = "drop")
 
 
-correlation <- cor(borough_wide$Manhattan, borough_wide$Brooklyn)
-print(paste("Correlation:", round(correlation, 3)))
+comparison <- greenpoint_yearly |>
+  inner_join(manhattan_yearly, by = "start_year")
 
 
-ggplot(borough_wide, aes(x = Manhattan, y = Brooklyn)) +
-  geom_point(size = 3) +
-  geom_smooth(method = "lm", se = FALSE, color = "red") +
-  geom_text(aes(label = start_year), vjust = -1, size = 3) +
+correlation <- cor(comparison$Greenpoint, comparison$Manhattan)
+
+
+model <- lm(Greenpoint ~ Manhattan, data = comparison)
+
+
+r_squared <- round(summary(model)$r.squared, 3)
+p_value <- round(summary(model)$coefficients[2, 4], 4)
+
+
+ggplot(comparison, aes(x = Manhattan, y = Greenpoint)) +
+  geom_point(size = 5, color = "forestgreen", alpha = 0.8) +
+  geom_smooth(method = "lm", se = TRUE, color = "red", fill = "pink", alpha = 0.2) +
+  geom_text(aes(label = start_year), vjust = -1.2, size = 3.5) +
   labs(
-    title = "Manhattan vs Brooklyn Film Productions",
-    subtitle = paste("Correlation:", round(correlation, 3)),
-    x = "Manhattan Productions",
-    y = "Brooklyn Productions"
+    title = "Greenpoint vs All Manhattan Film Productions",
+    subtitle = paste0("Correlation: ", round(correlation, 3), 
+                      " | R² = ", r_squared, 
+                      " | p = ", p_value),
+    x = "Manhattan Total Productions",
+    y = "Greenpoint Productions",
   ) +
-  theme_minimal()
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    plot.subtitle = element_text(size = 10, color = "gray40"))
 
 ```
+
+The Greenpoint and Manhattan follow entirely independent trajectories: The independence suggests that Greenpoint has established itself as a self-sustaining filming hub that operates outside of Manhattan.
+
+
+
+```{r}
+
+
+bushwick_yearly <- clean_permits |>
+  filter(zipcode == 11206) |>
+  filter(!start_year %in% c(2020, 2023)) |>
+  group_by(start_year) |>
+  summarise(Bushwick = n(), .groups = "drop")
+
+manhattan_yearly <- clean_permits |>
+  filter(borough == "Manhattan") |>
+  filter(!start_year %in% c(2020, 2023)) |>
+  group_by(start_year) |>
+  summarise(Manhattan = n(), .groups = "drop")
+
+comparison <- bushwick_yearly |>
+  inner_join(manhattan_yearly, by = "start_year")
+
+
+correlation <- cor(comparison$Bushwick, comparison$Manhattan)
+
+
+ggplot(comparison, aes(x = Manhattan, y = Bushwick)) +
+  geom_point(size = 5, color = "purple") +
+  geom_smooth(method = "lm", se = TRUE, color = "red", linetype = "dashed") +
+  geom_text(aes(label = start_year), vjust = -1.2, size = 3.5) +
+  labs(
+    title = "Bushwick vs All Manhattan Film Productions",
+    subtitle = "Correlation: -0.213 | R² = 0.045 | p = 0.583",
+    x = "Manhattan Total Productions",
+    y = "Bushwick Productions",
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    plot.subtitle = element_text(size = 10, color = "gray40")
+  )
+
+
+
+
+```
+Bushwick, Brooklyn has the highest emerging growth. Shows a weak negative correlation with total Manhattan film production, suggesting a slight inverse relationship as Manhattan declines, Bushwick tends to grow. While not statistically significant (p = 0.583), this pattern is stronger than Greenpoint's almost zero correlation, indicating Bushwick may be more directly absorbing production leaving Manhattan. 
