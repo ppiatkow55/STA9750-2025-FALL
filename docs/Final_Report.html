@@ -202,6 +202,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Cortlandt_Alley.jpg" class="img-fluid figure-img"></p>
+<figcaption>Cortlandt Alley</figcaption>
+</figure>
+</div>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>For decades, dreamers from every corner of the country and the world have relocated to New York City to experience all that the Big Apple has to offer. Most comes to the city with a romanticized idea about life in New York. These ideas are shaped by movies, tv shows, news, and other media.</p>
@@ -342,8 +348,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">formatRound</span>(<span class="at">columns =</span> <span class="st">"Total_Permits"</span>, <span class="at">digits =</span> <span class="dv">0</span>, <span class="at">mark =</span> <span class="st">","</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-5ea45abb1a2764bec15b" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-5ea45abb1a2764bec15b">{"x":{"filter":"none","vertical":false,"caption":"<caption>NYC Film Permits by Year<\/caption>","data":[[2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023],[10512,10612,11670,10740,11122,12080,11273,3411,9079,8141,5707]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Year<\/th>\n      <th>Total Permits<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":11,"dom":"t","columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[0,1]},{"name":"start_year","targets":0},{"name":"Total_Permits","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,11,25,50,100]}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-0823dcdfa2ddb75abbf4" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0823dcdfa2ddb75abbf4">{"x":{"filter":"none","vertical":false,"caption":"<caption>NYC Film Permits by Year<\/caption>","data":[[2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023],[10512,10612,11670,10740,11122,12080,11273,3411,9079,8141,5707]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Year<\/th>\n      <th>Total Permits<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":11,"dom":"t","columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[0,1]},{"name":"start_year","targets":0},{"name":"Total_Permits","targets":1}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,11,25,50,100]}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Approved film permits showed steady growth from 2013 through 2019. The upward trajectory came to an abrupt halt in 2020, when the COVID-19 pandemic forced productions to shut down, resulting in a sharp decline in permits issued. The industry rebounded in 2021 and 2022 as productions resumed,though permit counts have not fully returned to pre-pandemic levels. Data for 2023 reflects the impact of the SAG-AFTRA strike, which halted productions for close to 6 months. As a result, permit counts for 2023 are significantly lower.</p>
@@ -476,8 +482,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">formatRound</span>(<span class="at">columns =</span> <span class="st">"Pct_Overlap"</span>, <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-4ed1d0586af26af19147" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-4ed1d0586af26af19147">{"x":{"filter":"none","vertical":false,"caption":"<caption style=\"caption-side: top; text-align: left; font-weight: bold;\">Top 10 Zip Code Stability: Year-over-Year Overlap<\/caption>","data":[[2014,2015,2016,2017,2018,2019,2020,2021,2022,2023],[10,9,9,9,8,7,8,9,8,7],[0,2,2,1,2,3,2,1,2,3],[100,90,90,90,80,70,80,90,80,70]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Year<\/th>\n      <th>Zip Codes Retained<\/th>\n      <th>New Entries<\/th>\n      <th>% Overlap<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":15,"dom":"t","columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[0,1,2,3]},{"name":"Year","targets":0},{"name":"Overlap","targets":1},{"name":"New_Entries","targets":2},{"name":"Pct_Overlap","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,15,25,50,100]}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-1905553f8fc244c00bf1" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1905553f8fc244c00bf1">{"x":{"filter":"none","vertical":false,"caption":"<caption style=\"caption-side: top; text-align: left; font-weight: bold;\">Top 10 Zip Code Stability: Year-over-Year Overlap<\/caption>","data":[[2014,2015,2016,2017,2018,2019,2020,2021,2022,2023],[10,9,9,9,8,7,8,9,8,7],[0,2,2,1,2,3,2,1,2,3],[100,90,90,90,80,70,80,90,80,70]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Year<\/th>\n      <th>Zip Codes Retained<\/th>\n      <th>New Entries<\/th>\n      <th>% Overlap<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":15,"dom":"t","columnDefs":[{"targets":3,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[0,1,2,3]},{"name":"Year","targets":0},{"name":"Overlap","targets":1},{"name":"New_Entries","targets":2},{"name":"Pct_Overlap","targets":3}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,15,25,50,100]}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
 </div>
 </div>
 <p>If Zip Codes Retained + New Entries &gt; 10 it means we have a tie between two zip codes for the number of permits.</p>
@@ -529,40 +535,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Greenpoint, Brooklyn emerges as the dominant film production hotspot, consistently leading all neighborhoods with over 900 annual productions and a positive average year-over-year growth rate of (+2.7%). Long Island City, Queens holds the second position, though its trajectory shows a slight decline (-0.7%) over the period. Notably, most Manhattan neighborhoods are experiencing declining production activity, Hell’s Kitchen (-8.8%), Hudson Yards (-7.8%), and Midtown West (-6.6%) show the steepest drops, suggesting a shift away from traditional Manhattan filming locations. Chelsea, East Village, SoHo, and Brooklyn Heights follow similar downward trends. The only exception is Chinatown, which shows modest growth (+0.8%). This pattern reveals a broader geographic shift in NYC’s film industry, production is migrating from Manhattan’s historically popular neighborhoods toward Brooklyn, with Greenpoint establishing itself as the city’s premier filming destination.</p>
+<p>Greenpoint, Brooklyn emerges as the dominant film production hotspot, consistently leading all neighborhoods with over 900 annual productions and a positive average year-over-year growth rate of (+2.7%). Long Island City, Queens holds the second position, though its trajectory shows a slight decline (-0.7%) over the period. Notably, most Manhattan neighborhoods are experiencing declining production activity, Hell’s Kitchen (-8.8%), Hudson Yards (-7.8%), and Midtown West (-6.6%) show the steepest drops, suggesting a shift away from traditional Manhattan filming locations. Chelsea, East Village, SoHo, and Brooklyn Heights follow similar downward trends. The only exception is Chinatown, which shows modest growth (+0.8%).</p>
+<p>This pattern suggests a shift in NYC’s film industry, production may be migrating from Manhattan’s historically popular neighborhoods toward Greenpoint which establishes itself as the city’s premier filming destination. More analysis is needed to determine correllation.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>borough_yearly <span class="ot">&lt;-</span> clean_permits <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(borough <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Manhattan"</span>, <span class="st">"Brooklyn"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>start_year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2020</span>, <span class="dv">2023</span>)) <span class="sc">|&gt;</span>  </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(start_year, borough) <span class="sc">|&gt;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Productions =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>greenpoint_yearly <span class="ot">&lt;-</span> clean_permits <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(zipcode <span class="sc">==</span> <span class="dv">11222</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>start_year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2020</span>, <span class="dv">2023</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(start_year) <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Greenpoint =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>borough_wide <span class="ot">&lt;-</span> borough_yearly <span class="sc">|&gt;</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> borough, <span class="at">values_from =</span> Productions)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(borough_wide<span class="sc">$</span>Manhattan, borough_wide<span class="sc">$</span>Brooklyn)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Correlation:"</span>, <span class="fu">round</span>(correlation, <span class="dv">3</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Correlation: 0.83"</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(borough_wide, <span class="fu">aes</span>(<span class="at">x =</span> Manhattan, <span class="at">y =</span> Brooklyn)) <span class="sc">+</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> start_year), <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Manhattan vs Brooklyn Film Productions"</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Correlation:"</span>, <span class="fu">round</span>(correlation, <span class="dv">3</span>)),</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Manhattan Productions"</span>,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Brooklyn Productions"</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>manhattan_yearly <span class="ot">&lt;-</span> clean_permits <span class="sc">|&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(borough <span class="sc">==</span> <span class="st">"Manhattan"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>start_year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2020</span>, <span class="dv">2023</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(start_year) <span class="sc">|&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Manhattan =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>comparison <span class="ot">&lt;-</span> greenpoint_yearly <span class="sc">|&gt;</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(manhattan_yearly, <span class="at">by =</span> <span class="st">"start_year"</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(comparison<span class="sc">$</span>Greenpoint, comparison<span class="sc">$</span>Manhattan)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Greenpoint <span class="sc">~</span> Manhattan, <span class="at">data =</span> comparison)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>r_squared <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">summary</span>(model)<span class="sc">$</span>r.squared, <span class="dv">3</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">summary</span>(model)<span class="sc">$</span>coefficients[<span class="dv">2</span>, <span class="dv">4</span>], <span class="dv">4</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(comparison, <span class="fu">aes</span>(<span class="at">x =</span> Manhattan, <span class="at">y =</span> Greenpoint)) <span class="sc">+</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"forestgreen"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">fill =</span> <span class="st">"pink"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> start_year), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">1.2</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Greenpoint vs All Manhattan Film Productions"</span>,</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"Correlation: "</span>, <span class="fu">round</span>(correlation, <span class="dv">3</span>), </span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>                      <span class="st">" | R² = "</span>, r_squared, </span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>                      <span class="st">" | p = "</span>, p_value),</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Manhattan Total Productions"</span>,</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Greenpoint Productions"</span>,</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"gray40"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -572,6 +593,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>The Greenpoint and Manhattan follow entirely independent trajectories: The independence suggests that Greenpoint has established itself as a self-sustaining filming hub that operates outside of Manhattan.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>bushwick_yearly <span class="ot">&lt;-</span> clean_permits <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(zipcode <span class="sc">==</span> <span class="dv">11206</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>start_year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2020</span>, <span class="dv">2023</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(start_year) <span class="sc">|&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Bushwick =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>manhattan_yearly <span class="ot">&lt;-</span> clean_permits <span class="sc">|&gt;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(borough <span class="sc">==</span> <span class="st">"Manhattan"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>start_year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2020</span>, <span class="dv">2023</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(start_year) <span class="sc">|&gt;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Manhattan =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>comparison <span class="ot">&lt;-</span> bushwick_yearly <span class="sc">|&gt;</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(manhattan_yearly, <span class="at">by =</span> <span class="st">"start_year"</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(comparison<span class="sc">$</span>Bushwick, comparison<span class="sc">$</span>Manhattan)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(comparison, <span class="fu">aes</span>(<span class="at">x =</span> Manhattan, <span class="at">y =</span> Bushwick)) <span class="sc">+</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">+</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> start_year), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">1.2</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Bushwick vs All Manhattan Film Productions"</span>,</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Correlation: -0.213 | R² = 0.045 | p = 0.583"</span>,</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Manhattan Total Productions"</span>,</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Bushwick Productions"</span>,</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"gray40"</span>)</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Final_Report_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Bushwick, Brooklyn has the highest emerging growth. Shows a weak negative correlation with total Manhattan film production, suggesting a slight inverse relationship as Manhattan declines, Bushwick tends to grow. While not statistically significant (p = 0.583), this pattern is stronger than Greenpoint’s almost zero correlation, indicating Bushwick may be more directly absorbing production leaving Manhattan.</p>
 
 
 </section>
