@@ -8,7 +8,9 @@ execute:
   echo: true 
   warning: false 
   message: false
-
+format:
+ html:
+    theme: cosmo
 ---
 
 ## Introduction
