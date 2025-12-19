@@ -19,6 +19,8 @@ website:
         href: "./mp03.html"
       - text: "Mini Project 04"
         href: "./mp04.html"
+      - text: "Final"
+        href: "./Final_Report.html"
 format:
   html:
     theme: cosmo
