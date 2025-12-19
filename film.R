@@ -4,13 +4,14 @@ library(dplyr)
 
 
 
+
 permits <- read_csv("https://raw.githubusercontent.com/NewYorkCityCouncil/film_industry_hearing/refs/heads/master/permits.csv") 
 
 write_csv(permits, file = "permits_data.csv")
 
 
 
-Recent_Permits <- read.csv("https://raw.githubusercontent.com/ppiatkow55/STA9750-2025-FALL/refs/heads/main/Film_Permits_20251105.csv")
+Recent_Permits <- read.csv("https://raw.githubusercontent.com/ppiatkow55/STA9750-2025-FALL/refs/heads/main/docs/Film_Permits_20251105.csv")
 
 write_csv(permits, file = "Recent_Permits.csv")
 
@@ -80,4 +81,55 @@ large_permits <- permits |>
     ungroup()
   
   
+  write_csv(clean_permits, "clean_permits.csv")
   
+  
+  clean_permits |>
+    summarise(Unique_Zip_Codes = n_distinct(zipcode))
+  
+  
+  
+  
+  top10_by_year <- clean_permits |>
+    group_by(start_year, zipcode) |>
+    summarise(Productions = n(), .groups = "drop") |>
+    group_by(start_year) |>
+    slice_max(order_by = Productions, n = 10) |>
+    mutate(Rank = row_number()) |>
+    ungroup()
+  
+  
+  years <- sort(unique(top10_by_year$start_year))
+  
+  overlap_analysis <- tibble()
+  
+  for (i in 2:length(years)) {
+    prev_year <- years[i - 1]
+    curr_year <- years[i]
+    
+    prev_top10 <- top10_by_year |> filter(start_year == prev_year) |> pull(zipcode)
+    curr_top10 <- top10_by_year |> filter(start_year == curr_year) |> pull(zipcode)
+    
+    overlap <- length(intersect(prev_top10, curr_top10))
+    new_entries <- length(setdiff(curr_top10, prev_top10))
+    
+    overlap_analysis <- bind_rows(overlap_analysis, tibble(
+      Year = curr_year,
+      Overlap = overlap,
+      New_Entries = new_entries,
+      Pct_Overlap = (overlap / 10) * 100
+    ))
+  }
+  
+  
+  datatable(
+    overlap_analysis,
+    caption = htmltools::tags$caption(
+      style = 'caption-side: top; text-align: left; font-weight: bold;',
+      'Top 10 Zip Code Stability: Year-over-Year Overlap'
+    ),
+    rownames = FALSE,
+    colnames = c("Year", "Zip Codes Retained", "New Entries", "% Overlap"),
+    options = list(pageLength = 15, dom = 't')
+  ) |>
+    formatRound(columns = "Pct_Overlap", digits = 0)
